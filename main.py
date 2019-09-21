@@ -5,7 +5,7 @@ from app import controller
 
 
 if __name__ == "__main__":
-    controller.app.run(port=8888)
+    controller.app.run(host="0.0.0.0", port=8888)
 
     # run()안에 입력이 없을 경우 : local host: 5000번 포트로 열어줌
     # 실행 되면 서버가 켜지고 중지 시키면 서버가 죽음 (port가 닫힘)
