@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Flask Board</title>
+    <script>
+        function product_crawler() {
+            var url = "http://18.218.159.243:8888/product_crawler"
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", url, false);
+            xmlHttp.send(null);
+            var responseText = xmlHttp.responseText;
+            document.getElementById("demo").innerHTML = responseText;
+        }
+    </script>
 </head>
 <body>
 <h1>This is Board</h1>
-<p>date, title</p>
+<button onclick="product_crawler()">Click me</button>
+<p id="demo">result for the day</p>
 </body>
 </html>
