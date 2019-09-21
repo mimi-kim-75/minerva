@@ -3,10 +3,7 @@
 
 import MySQLdb
 # python path에 넣었으나 찾지 못해서 path 따로 지정
-import sys
-sys.path.append('/Library/Frameworks/Python.framework/Versions/3.7/bin/')
-
-import config  # python3.7이 있는 디렉토리에서 config.py 생성했으나..찾지 못함
+import app.models.config as config
 
 db = MySQLdb.connect(host = config.HOST,
                      user = config.USER,
