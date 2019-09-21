@@ -27,12 +27,15 @@ def join():
 # join : 신규회원이 입력을 해서 날렷을때 그걸 수집하고 저장하는 로직이 필요
 
 
-@app.route("/board")  # app.route: 라우팅 (교통정리 역할 -> "/"주소로 들어왔을 때 아래의 def를 실행해서 return 한다
-def board():
-
+@app.route("/product_crawler")  # app.route: 라우팅 (교통정리 역할 -> "/"주소로 들어왔을 때 아래의 def를 실행해서 return 한다
+def product_crawler():
     result = connector.cur_execute()
+    return result
 
-    return " ".join(result)
+
+@app.route("/board")
+def board():
+    return render_template("board.html")
 
 
 # 라우를 하려면 서버로부터 구동을 해주는 역할을 하는 함수가 필요 -> main.py가 그 역할을 수행
