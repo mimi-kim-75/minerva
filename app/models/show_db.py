@@ -30,8 +30,11 @@ class Connector:
 
             result.append(json_string)
         result = json.dumps(result)
-        self.db.close()
+
         return result
+
+    def cur_close(self):
+        self.db.close()
 
 
 
