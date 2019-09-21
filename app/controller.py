@@ -1,8 +1,10 @@
 from flask import Flask, render_template
-
+from app.models.show_db import Connector
 
 
 app = Flask(__name__)
+
+connector = Connector()
 
 
 @app.route("/")
@@ -27,7 +29,10 @@ def join():
 
 @app.route("/board")  # app.route: 라우팅 (교통정리 역할 -> "/"주소로 들어왔을 때 아래의 def를 실행해서 return 한다
 def board():
-    return render_template("board.html")
+
+    result = connector.cur_execute()
+
+    return " ".join(result)
 
 
 # 라우를 하려면 서버로부터 구동을 해주는 역할을 하는 함수가 필요 -> main.py가 그 역할을 수행
