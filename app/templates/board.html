@@ -1,25 +1,81 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Flask Board</title>
+{% extends "layout.html" %}
+{% block content %}
     <script>
-        function product_crawler() {
+        function request_crawler() {
             var url = "http://18.218.159.243:8888/product_crawler"
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", url, false);
             xmlHttp.send(null);
             var responseText = xmlHttp.responseText; // 여기까지는 json 받아온 것
+            var responseJson = JSON.parse(responseText);
+            return responseJson
 
-// json으로 차트 만들기
-
-            document.getElementById("demo").innerHTML = responseText;
+             //document.getElementById("demo").innerHTML = responseText;
         }
+
+        function json2array() {
+            var response_crawler = request_crawler()
+            var result = [];
+            var keys = Object.keys(response_crawler);
+            keys.forEach(function(key){
+                result.push(JSON.parse(response_crawler[key]));
+            });
+            return result;
+        }
+
+        function test() {
+            var res = json2array();
+
+            document.getElementById("demo").innerHTML = typeof res[1];
+            <!--console.log(res)-->
+        }
+
+
+        // Builds the HTML Table out of myList.
+        var json_array = json2array()
+        function buildHtmlTable(selector) {
+
+            var columns = addAllColumnHeaders(json_array, selector);
+            for (var i = 0; i < json_array.length; i++) {
+                var row$ = $('<tr/>');
+                for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                  var cellValue = json_array[i][columns[colIndex]];
+                  if (cellValue == null) cellValue = "";
+                  row$.append($('<td/>').html(cellValue));
+                }
+                $(selector).append(row$);
+            }
+        }
+
+        // Adds a header row to the table and returns the set of columns.
+        // Need to do union of keys from all records as some records may not contain
+        // all records.
+        function addAllColumnHeaders(json_array, selector) {
+            var columnSet = [];
+            var headerTr$ = $('<tr/>');
+
+            for (var i = 0; i < json_array.length; i++) {
+                var rowHash = json_array[i];
+                for (var key in rowHash) {
+                    if ($.inArray(key, columnSet) == -1) {
+                        columnSet.push(key);
+                        headerTr$.append($('<th/>').html(key));
+                    }
+                }
+            }
+            $(selector).append(headerTr$);
+
+            return columnSet;
+        }
+
     </script>
-</head>
-<body>
-<h1>This is Board</h1>
-<button onclick="product_crawler()">Click me</button>
-<p id="demo">result for the day</p>
-</body>
-</html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <div class="jumbo">
+        <h2>Product Crawler</h2>
+        <button onclick="buildHtmlTable('#excelDataTable')">Show Top 10 Best-sellers</button>
+            <table id="excelDataTable" border="1">
+            </table>
+        <p id="demo">result for the week.</p>
+    </div>
+{% endblock %}
