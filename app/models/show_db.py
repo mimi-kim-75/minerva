@@ -2,10 +2,11 @@
 # 1. python과　mysql 연결: minerva db에 쌓여 있는 sql을 python파일로 내려받는 코드
 
 import MySQLdb
-# python path에 넣었으나 찾지 못해서 path 따로 지정
 import app.models.config as config
 import json
 
+
+# Connector 클래스: ubuntu서버의 SQL파일을 json으로 dump -> 현재는 클래스가 하나 / 향후에 여러 클래스를 add 가능
 class Connector:
     def __init__(self):
         self.db = MySQLdb.connect(host = config.HOST,
@@ -25,8 +26,8 @@ class Connector:
             brand_name = row[3]
             price = row[4]
             amount = row[5]
-            json_string = f"{{'id': {id}, 'datetime' : {datetime}, 'product_name' : {product_name}, 'brand_name' : {brand_name}," \
-                          f"'price' : {price}, 'amount' : {amount}}}"
+            json_string = f'{{"id": {id}, "datetime" : "{datetime}", "product_name" : "{product_name}", "brand_name" : "{brand_name}",' \
+                          f'"price" : {price}, "amount" : {amount}}}'
 
             result.append(json_string)
         result = json.dumps(result)
