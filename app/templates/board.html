@@ -9,7 +9,10 @@
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", url, false);
             xmlHttp.send(null);
-            var responseText = xmlHttp.responseText;
+            var responseText = xmlHttp.responseText; // 여기까지는 json 받아온 것
+
+// json으로 차트 만들기
+
             document.getElementById("demo").innerHTML = responseText;
         }
     </script>
