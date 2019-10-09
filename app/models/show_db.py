@@ -17,17 +17,40 @@ class Connector:
 
     def cur_execute(self):
         # to apply SQL
-        self.cur.execute('SELECT * FROM coupang_sales_data')
+        self.cur.execute('SELECT * FROM shopFryingpan')
         result = []
         for row in self.cur.fetchall():
-            id = row[0]
-            datetime = str(row[1])
-            product_name = row[2]
-            brand_name = row[3]
-            price = row[4]
-            amount = row[5]
-            json_string = f'{{"id": {id}, "datetime" : "{datetime}", "product_name" : "{product_name}", "brand_name" : "{brand_name}",' \
-                          f'"price" : {price}, "amount" : {amount}}}'
+            unique_id = row[0]
+            channel = row[1]
+            brand = row[2]
+            product_name = row[3]
+            real_price = row[4]
+            product_size = row[5]
+            product_material = row[6]
+            product_shape = row[7]
+            product_pattern = row[8]
+            pick = row[9]
+            purchase = row[10]
+            review = row[11]
+            seller_number = row[12]
+            sales_date = row[13]
+
+            json_string = f"""{{
+            "id": {unique_id}, 
+            "channel": "{channel}", 
+            "brand": "{brand}", 
+            "product_name": "{product_name}", 
+            "real_price" : {real_price}, 
+            "product_size" : {product_size}, 
+            "product_material" : "{product_material}",
+            "product_shape" : "{product_shape}",
+            "product_pattern" : "{product_pattern}",
+            "pick" : {pick},
+            "purchase" : {purchase},
+            "review" : {review},
+            "seller_number" : {seller_number},
+            "sales_date" : "{sales_date}"
+            }}"""
 
             result.append(json_string)
         result = json.dumps(result)
