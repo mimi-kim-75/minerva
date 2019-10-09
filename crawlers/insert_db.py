@@ -31,6 +31,7 @@ class Connector:
 
         mysql_insert_query = f"""
             INSERT INTO shopFryingpan (
+            id,
             channel, 
             brand, 
             product_name, 
@@ -45,6 +46,7 @@ class Connector:
             seller_number, 
             sales_date
             ) VALUES (
+            NULL,
             {channel}, 
             {brand}, 
             {product_name}, 
