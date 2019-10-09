@@ -1,14 +1,14 @@
 import MySQLdb
-from .. import config
+from config import db_config
 
 
 # Connector 클래스
 class Connector:
     def __init__(self):
-        self.db = MySQLdb.connect(host = config.HOST,
-                                  user = config.USER,
-                                  passwd = config.PASS,
-                                  db = config.MYDB)
+        self.db = MySQLdb.connect(host = db_config.HOST,
+                                  user = db_config.USER,
+                                  passwd = db_config.PASS,
+                                  db = db_config.MYDB)
         self.cur = self.db.cursor()
 
     def cur_insert(self,
