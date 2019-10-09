@@ -13,7 +13,7 @@ product_pattern = "flower"
 pick = 10000
 purchase = 8000  # naver only
 review = 4000  # naver only
-sellers_number = 50  # naver only
+seller_number = 50  # naver only
 sales_date = "2018.04"  # naver only
 
 # insert DB
@@ -30,6 +30,6 @@ connector.cur_insert(
     pick,
     purchase,
     review,
-    sellers_number,
+    seller_number,
     sales_date
 )
