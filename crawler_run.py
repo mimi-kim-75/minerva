@@ -1,0 +1,4 @@
+from crawlers import naver_shopping_crawler
+
+
+naver_shopping_crawler
