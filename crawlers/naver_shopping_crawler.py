@@ -1,4 +1,4 @@
-from insert_db import Connector
+from crawlers.insert_db import Connector
 # parse following data - navershopping
 # 크롤러 구현해야 함
 
