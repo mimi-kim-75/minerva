@@ -1,18 +1,18 @@
 # business logic 을 작성
 # 1. python과　mysql 연결: minerva db에 쌓여 있는 sql을 python파일로 내려받는 코드
 
-import MySQLdb
-import app.models.config as config
 import json
+import MySQLdb
+import config
 
 
 # Connector 클래스: ubuntu서버의 SQL파일을 json으로 dump -> 현재는 클래스가 하나 / 향후에 여러 클래스를 add 가능
 class Connector:
     def __init__(self):
         self.db = MySQLdb.connect(host = config.HOST,
-                             user = config.USER,
-                             passwd = config.PASS,
-                             db = config.MYDB)
+                                  user = config.USER,
+                                  passwd = config.PASS,
+                                  db = config.MYDB)
         self.cur = self.db.cursor()
 
     def cur_execute(self):
@@ -31,12 +31,6 @@ class Connector:
 
             result.append(json_string)
         result = json.dumps(result)
-
-        return result
-
-    def cur_close(self):
         self.db.close()
 
-
-
-
+        return result
