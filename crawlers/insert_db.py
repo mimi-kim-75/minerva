@@ -26,7 +26,7 @@ class Connector:
                    pick,
                    purchase,
                    review,
-                   sellers_number,
+                   seller_number,
                    sales_date):
 
         mysql_insert_query = f"""
@@ -42,7 +42,7 @@ class Connector:
             pick, 
             purchase, 
             review, 
-            sellers_number, 
+            seller_number, 
             sales_date
             ) VALUES (
             {channel}, 
@@ -56,7 +56,7 @@ class Connector:
             {pick}, 
             {purchase}, 
             {review}, 
-            {sellers_number}, 
+            {seller_number}, 
             {sales_date}
             )"""
 
