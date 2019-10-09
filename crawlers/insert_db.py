@@ -1,5 +1,5 @@
 import MySQLdb
-import config
+from .. import config
 
 
 # Connector 클래스
