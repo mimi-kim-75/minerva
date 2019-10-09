@@ -3,16 +3,16 @@
 
 import json
 import MySQLdb
-import config
+from config import db_config
 
 
 # Connector 클래스: ubuntu서버의 SQL파일을 json으로 dump -> 현재는 클래스가 하나 / 향후에 여러 클래스를 add 가능
 class Connector:
     def __init__(self):
-        self.db = MySQLdb.connect(host = config.HOST,
-                                  user = config.USER,
-                                  passwd = config.PASS,
-                                  db = config.MYDB)
+        self.db = MySQLdb.connect(host = db_config.HOST,
+                                  user = db_config.USER,
+                                  passwd = db_config.PASS,
+                                  db = db_config.MYDB)
         self.cur = self.db.cursor()
 
     def cur_execute(self):
