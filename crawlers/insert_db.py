@@ -47,19 +47,19 @@ class Connector:
             `sales_date`
             ) VALUES (
             NULL,
-            {channel}, 
-            {brand}, 
-            {product_name}, 
+            '{channel}', 
+            '{brand}', 
+            '{product_name}', 
             {real_price}, 
             {product_size}, 
-            {product_material}, 
-            {product_shape},
-            {product_pattern}, 
+            '{product_material}', 
+            '{product_shape}',
+            '{product_pattern}', 
             {pick}, 
             {purchase}, 
             {review}, 
             {seller_number}, 
-            {sales_date}
+            '{sales_date}'
             )"""
 
         self.cur.execute(mysql_insert_query)
