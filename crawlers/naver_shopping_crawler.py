@@ -1,6 +1,6 @@
 from insert_db import Connector
 # parse following data - navershopping
-# 크롤러 구현해야 함
+# """write crawler here"""
 
 channel = "naver"
 brand = "brand"
