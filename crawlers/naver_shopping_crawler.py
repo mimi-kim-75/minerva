@@ -3,10 +3,10 @@ from insert_db import Connector
 # """write crawler here"""
 
 channel = "naver"
-brand = "brand"
-product_name = "name"
-real_price = 10000
-product_size = 10
+brand = "silvert"
+product_name = "silvert_fryingpan"
+real_price = 20000
+product_size = 20
 product_material = "metal"
 product_shape = "round"
 product_pattern = "flower"
