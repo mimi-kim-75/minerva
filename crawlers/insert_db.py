@@ -25,6 +25,7 @@ class Connector:
                    GA,
                    GD,
                    points):
+
         Position = Position
         club = club
         played = played
@@ -37,7 +38,7 @@ class Connector:
         points = points
 
         mysql_insert_query = f"""
-            INSERT INTO shopFryingpan (
+            INSERT INTO EnglishPremierLeague (
             `id`,
             `Position`, 
             `club`, 

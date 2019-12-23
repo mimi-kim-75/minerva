@@ -19,7 +19,7 @@ class Connector:
 
     def cur_execute(self):
         # to apply SQL
-        self.cur.execute('SELECT * FROM shopFryingpan')
+        self.cur.execute('SELECT * FROM EnglishPremierLeague')
         result = []
         for row in self.cur.fetchall():
             unique_id = row[0]

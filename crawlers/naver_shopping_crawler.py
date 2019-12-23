@@ -8,14 +8,12 @@ driver = webdriver.Chrome()
 driver.get('https://www.premierleague.com/tables')
 
 try:
-    driver.find_element_by_css_selector('.closeBtn').click()
+    driver.find_element_by_css_selector('`.closeBtn').click()
 except:
     print("no layer")
 
 eplranking_selector = driver.find_element_by_css_selector('#mainContent')
 items = eplranking_selector.find_elements_by_css_selector('.tableBodyContainer tr:not(.expandable)')
-
-df = pd.DataFrame(columns=["Position", "club", "played", "won", "drawn", "lost", "GF", "GA", "GD", "points"])
 
 for i in range(20):
     Position = items[i].find_elements_by_css_selector('tr>#Tooltip')[0].text
@@ -40,20 +38,9 @@ for i in range(20):
             "GD": GD,
             "points": points}
 
-    # df.loc[len(df)] = data
 
     driver.close
-#
-Position = Position
-club = club
-played = played
-won = won
-drawn = drawn
-lost = lost
-GF = GF
-GA = GA
-GD = GD
-points = points
+
 # insert DB
 connector = Connector()
 connector.cur_insert(
@@ -66,5 +53,5 @@ connector.cur_insert(
     GF,
     GA,
     GD,
-    points,
+    points
 )
