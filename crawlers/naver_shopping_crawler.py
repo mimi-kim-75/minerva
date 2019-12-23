@@ -44,7 +44,7 @@ for i in range(20):
 
     driver.close
 #
-Posigtion = Position
+Position = Position
 club = club
 played = played
 won = won

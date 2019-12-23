@@ -15,51 +15,52 @@ class Connector:
         self.cur = self.db.cursor()
 
     def cur_insert(self,
-                   channel,
-                   brand,
-                   product_name,
-                   real_price,
-                   product_size,
-                   product_material,
-                   product_shape,
-                   product_pattern,
-                   pick,
-                   purchase,
-                   review,
-                   seller_number,
-                   sales_date):
+                   Position,
+                   club,
+                   played,
+                   won,
+                   drawn,
+                   lost,
+                   GF,
+                   GA,
+                   GD,
+                   points):
+        Position = Position
+        club = club
+        played = played
+        won = won
+        drawn = drawn
+        lost = lost
+        GF = GF
+        GA = GA
+        GD = GD
+        points = points
 
         mysql_insert_query = f"""
             INSERT INTO shopFryingpan (
             `id`,
-            `channel`, 
-            `brand`, 
-            `product_name`, 
-            `real_price`, 
-            `product_size`, 
-            `product_material`,
-            `product_shape`,
-            `product_pattern`, 
-            `pick`, 
-            `purchase`, 
-            `review`, 
-            `seller_number`, 
-            `sales_date`
+            `Position`, 
+            `club`, 
+            `won`, 
+            `drawn`, 
+            `lost`, 
+            `GF`,
+            `GA`,
+            `GD`, 
+            `points`, 
             ) VALUES (
             NULL,
-            '{channel}', 
-            '{brand}', 
-            '{product_name}', 
-            {real_price}, 
-            {product_size}, 
-            '{product_material}', 
-            '{product_shape}',
-            '{product_pattern}', 
-            {pick}, 
-            {purchase}, 
-            {review}, 
-            {seller_number}, 
-            '{sales_date}'
+            '{Position}', 
+            '{club}', 
+            '{played}', 
+            {won}, 
+            {drawn}, 
+            '{lost}', 
+            '{GF}',
+            '{GA}', 
+            {GD}, 
+            {points}, 
+           
             )"""
 
         self.cur.execute(mysql_insert_query)
