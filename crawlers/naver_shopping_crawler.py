@@ -10,7 +10,8 @@ driver = webdriver.Chrome()
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument('--no-sandbox')
-driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=chrome_options)
+chrome_options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome('/path/to/your_chrome_driver_dir/chromedriver',chrome_options=chrome_options)
 
 
 driver.get('https://www.premierleague.com/tables')
