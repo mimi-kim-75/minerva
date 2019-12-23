@@ -2,9 +2,17 @@ from insert_db import Connector
 # parse following data - navershopping
 # """write crawler here"""
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import pandas as pd
 
 driver = webdriver.Chrome()
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument('--no-sandbox')
+driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=chrome_options)
+
+
 driver.get('https://www.premierleague.com/tables')
 
 try:
