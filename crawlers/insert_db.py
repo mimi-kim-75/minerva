@@ -1,6 +1,6 @@
 import MySQLdb
 import sys
-sys.path.append("..")  # 시스템 path에 상위 폴더 추
+# sys.path.append("..")  # 시스템 path에 상위 폴더 추
 
 from config import db_config
 
